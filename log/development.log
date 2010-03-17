@@ -1,0 +1,118 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (16.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateContents (20100317102110)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "location_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317102110')[0m
+Migrating to CreateLocations (20100317102132)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(15,10), "lng" decimal(15,10), "address" text, "city" varchar(255), "state" varchar(255), "country" varchar(255), "pincode" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317102132')[0m
+Migrating to CreateRanchoContentPointer (20100317115656)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "rancho_content_pointers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content_id" integer, "content_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_content_pointers_on_content_id" ON "rancho_content_pointers" ("content_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_content_pointers_on_content_type" ON "rancho_content_pointers" ("content_type")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317115656')[0m
+Migrating to CreateRanchoIndex (20100317115657)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "rancho_indexes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rancho_content_pointer_id" integer, "word_id" integer, "position" integer, "lat" decimal(15,10), "lng" decimal(15,10)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_indexes_on_rancho_content_pointer_id" ON "rancho_indexes" ("rancho_content_pointer_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_indexes_on_word_id" ON "rancho_indexes" ("word_id")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_indexes_on_word_id_and_rancho_content_pointer_id" ON "rancho_indexes" ("word_id", "rancho_content_pointer_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317115657')[0m
+Migrating to CreateRanchoWord (20100317115658)
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateContents (20100317102110)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "location_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317102110')[0m
+Migrating to CreateLocations (20100317102132)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(15,10), "lng" decimal(15,10), "address" text, "city" varchar(255), "state" varchar(255), "country" varchar(255), "pincode" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317102132')[0m
+Migrating to CreateRanchoContentPointer (20100317115856)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "rancho_content_pointers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content_id" integer, "content_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_content_pointers_on_content_id" ON "rancho_content_pointers" ("content_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_rancho_content_pointers_on_content_type" ON "rancho_content_pointers" ("content_type")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317115856')[0m
+Migrating to CreateRanchoIndex (20100317115857)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "rancho_indexes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rancho_content_pointer_id" integer, "rancho_word_id" integer, "position" integer, "lat" decimal(15,10), "lng" decimal(15,10)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_indexes_on_rancho_content_pointer_id" ON "rancho_indexes" ("rancho_content_pointer_id")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_indexes_on_rancho_word_id" ON "rancho_indexes" ("rancho_word_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_indexes_on_rancho_word_id_and_rancho_content_pointer_id" ON "rancho_indexes" ("rancho_word_id", "rancho_content_pointer_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317115857')[0m
+Migrating to CreateRanchoWord (20100317115858)
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateContents (20100317102110)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "location_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317102110')[0m
+Migrating to CreateLocations (20100317102132)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(15,10), "lng" decimal(15,10), "address" text, "city" varchar(255), "state" varchar(255), "country" varchar(255), "pincode" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317102132')[0m
+Migrating to CreateRanchoContentPointer (20100317120005)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "rancho_content_pointers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content_id" integer, "content_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_content_pointers_on_content_id" ON "rancho_content_pointers" ("content_id")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_content_pointers_on_content_type" ON "rancho_content_pointers" ("content_type")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317120005')[0m
+Migrating to CreateRanchoIndex (20100317120006)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "rancho_indexes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rancho_content_pointer_id" integer, "rancho_word_id" integer, "position" integer, "lat" decimal(15,10), "lng" decimal(15,10)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_indexes_on_rancho_content_pointer_id" ON "rancho_indexes" ("rancho_content_pointer_id")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_rancho_indexes_on_rancho_word_id" ON "rancho_indexes" ("rancho_word_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_rancho_indexes_on_rancho_word_id_and_rancho_content_pointer_id" ON "rancho_indexes" ("rancho_word_id", "rancho_content_pointer_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317120006')[0m
+Migrating to CreateRanchoWord (20100317120007)
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "rancho_words" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "stem" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE INDEX "index_rancho_words_on_stem" ON "rancho_words" ("stem")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100317120007')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("contents")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("locations")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("rancho_content_pointers")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_rancho_content_pointers_on_content_type')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_rancho_content_pointers_on_content_id')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mPRAGMA index_list("rancho_indexes")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_info('index_rancho_indexes_on_rancho_word_id_and_rancho_content_pointer_id')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_rancho_indexes_on_rancho_word_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_rancho_indexes_on_rancho_content_pointer_id')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mPRAGMA index_list("rancho_words")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_rancho_words_on_stem')[0m
