@@ -1,5 +1,5 @@
 
-GOOGLE_MAP_API_KEY = "ABQIAAAAixmcoWNPugilXB-XP7y7GhT4xJxYHqB9hO8D5IzLS34vv-kQFxTs2WxcTydLujJKBA8zYUxmlhdWDQ" 
+GOOGLE_MAP_API_KEY = "ABQIAAAAyeCvmxkIRps-zjsGlV3blxTtsmv3nPXm7goagE-Gm7CGH_SM2BRENgf-OnOkScbHQctf3gKOQd5R5w" 
 GOOGLE_MAP_API_URL = "http://www.google.com/jsapi?key=#{GOOGLE_MAP_API_KEY}&sensor=false"
   
  
