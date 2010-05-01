@@ -1,0 +1,19 @@
+
+body { font-family: Arial, sans-serif; font-size: 1em; }
+
+#query-div {font-size: 1.3em; color:#2d0101; }
+
+#query {
+	border: 1px black solid;	
+	width: 325px;
+	height: 25px;
+	font-size: 1em;
+	background-color: #ffffff;
+	border-bottom: 3px #b8614b double;
+}
+.search-button {
+	height: 40px;
+	font-size: 1.4em;
+}
+
+.footer { font-family: Arial, sans-serif; font-size: 0.5em; }

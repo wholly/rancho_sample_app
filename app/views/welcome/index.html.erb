@@ -1,0 +1,44 @@
+
+<% form_tag '/welcome/search' do -%>
+<center>
+<img src="/images/logo_large.png" style="width:550px;">
+  
+<%= "<script type='text/javascript' src=\"#{GOOGLE_MAP_API_URL}\"> </script>" -%>
+<script type="text/javascript"> google.load("maps", "2.x");  </script>
+<div id="query-div">
+  <label> Local Query: </label><%=text_field_tag :query -%>
+</div>
+<br>
+<div id="map_div"  style="width:450px;height:300px;"> Map </div>
+
+<script type="text/javascript">
+var map;
+window.onload = function() {
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(document.getElementById("map_div"));
+    map.setCenter(new GLatLng(40.755970,-73.986702),4);
+    marker = new GMarker(map.getCenter(),{draggable:true});
+    map.addOverlay(marker);
+    GEvent.addListener(marker, "dragend", function() {
+           var point = marker.getLatLng();
+	      //alert("You clicked the map."+point.x+"   "+point.y);
+	      document.getElementById("lat").setAttribute("value",point.y);
+		  document.getElementById("lng").setAttribute("value",point.x);
+	     });
+   }
+}
+</script>
+
+
+Lat:<%=text_field_tag :lat  -%>
+
+Lng:<%=text_field_tag :lng  -%><br><br>
+Radius:<%=text_field_tag :radius, "5 " ,:size=>"3"-%><br>
+<br>
+
+<%= submit_tag "Search", :class => "search-button" -%>
+
+<% end %>
+</center>
+
+

@@ -1,0 +1,27 @@
+<a href="/welcome/index"> <img src="/images/logo_small.png" border=0></a>
+
+<p style="font:bold;color:orange;"> You searched for :"<%= @search_keywords -%>" <br></p>
+
+<p style="color:red">Number of Records found    <%= @results_with_ranks.count %><br></p> 
+<a href="/welcome/index"> search again</a>
+<hr style="color:blue"> 
+
+
+<% @results_with_ranks.each do |result| -%>
+
+  <% content_id = RanchoContentPointer.find(result[0]).content_id %>
+  <% content= Content.find(content_id) %>
+  <%= truncate content.body, :length => 200 %>
+	
+ <a href="/welcome/details?id=<%=content.id -%>">details</a><br/>
+<p style="color:blue">at position
+  <%=content.location.lat %>
+  <%=content.location.lng %> <br/>
+ </p>
+
+<hr style="color:blue"> 
+
+<% end -%>
+
+
+
