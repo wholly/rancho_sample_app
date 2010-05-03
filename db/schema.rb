@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20100317120007) do
   add_index "rancho_content_pointers", ["content_id"], :name => "index_rancho_content_pointers_on_content_id"
   add_index "rancho_content_pointers", ["content_type"], :name => "index_rancho_content_pointers_on_content_type"
 
-  create_table "rancho_indexes", :force => true do |t|
+  create_table "rancho_indices", :force => true do |t|
     t.integer "rancho_content_pointer_id"
     t.integer "rancho_word_id"
     t.integer "position"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20100317120007) do
     t.decimal "lng",                       :precision => 15, :scale => 10
   end
 
-  add_index "rancho_indexes", ["rancho_content_pointer_id"], :name => "index_rancho_indexes_on_rancho_content_pointer_id"
-  add_index "rancho_indexes", ["rancho_word_id", "rancho_content_pointer_id"], :name => "index_rancho_indexes_on_rancho_word_id_and_rancho_content_pointer_id"
-  add_index "rancho_indexes", ["rancho_word_id"], :name => "index_rancho_indexes_on_rancho_word_id"
+  add_index "rancho_indices", ["rancho_content_pointer_id"], :name => "index_rancho_indices_on_rancho_content_pointer_id"
+  add_index "rancho_indices", ["rancho_word_id", "rancho_content_pointer_id"], :name => "index_rancho_indices_on_rancho_word_id_and_rancho_content_pointer_id"
+  add_index "rancho_indices", ["rancho_word_id"], :name => "index_rancho_indices_on_rancho_word_id"
 
   create_table "rancho_words", :force => true do |t|
     t.string   "stem"

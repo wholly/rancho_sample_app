@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/rancho"]
-	path = vendor/plugins/rancho
-	url = http://github.com/parolkar/rancho.git
